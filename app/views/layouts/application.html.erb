@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TestDeviseEfigenc</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container" >
+      <%= link_to "Test Devise  ", root_path, id: "logo" %>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Product",  products_path %></li>
+
+          <!--  <li>< link_to "Log in", '#' %></li> -->
+          <li>
+            <div id="user_nav">
+              <% if user_signed_in? %>
+                Logged in as <strong><%= current_user.email %></strong>.
+                <%= link_to 'Edit profile', edit_user_registration_path %> |
+                <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+              <% else %>
+                <%= link_to "Sign up", new_user_registration_path %> |
+                <%= link_to "Login", new_user_session_path %>
+              <% end %>
+            </div>
+          </li>
+
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+
+
+
+  <div class="col-md-offset-2 col-md-8">
+    <%= yield %>
+  </div>
+
+
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+
+
+  </body>
+</html>
